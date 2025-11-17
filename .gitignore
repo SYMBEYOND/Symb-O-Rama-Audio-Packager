@@ -1,0 +1,27 @@
+# Ignore Python cache and virtual environments
+__pycache__/
+*.pyc
+venv/
+.env
+*.env
+
+# Ignore macOS metadata
+.DS_Store
+
+# Ignore generated audio and video
+*.mp3
+*.wav
+*.webm
+*.mp4
+
+# Ignore temporary or user-specific folders
+DropZone/
+LOR_Packages/
+
+# Ignore build app
+dist/
+runtime/
+node_modules/
+*.dmg
+*.zip
+*.app

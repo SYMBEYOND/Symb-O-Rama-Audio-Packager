@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Light O Rama Audio Packager • SYMBEYOND</title>
+  <link rel="stylesheet" href="./style.css" />
+
+  <style>
+    @keyframes spectralFlow {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      color: #e3e7ff;
+
+      /* flowing multi-spectrum gradient */
+      background: linear-gradient(
+        115deg,
+        #330000,   /* deep IR */
+        #ff4500,
+        #ffeb3b,
+        #00ff85,
+        #00b0ff,
+        #7c4dff,   /* indigo */
+        #d400ff,   /* UV boundary */
+        #330000
+      );
+
+      background-size: 800% 800%;
+      animation: spectralFlow 65s cubic-bezier(0.42, 0.0, 0.58, 1.0) infinite;
+    }
+
+    .root {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .card {
+      width: 460px;
+      background: rgba(10, 12, 30, 0.9);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.65);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .uniform {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .btn {
+      padding: 12px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #4d5bff, #7a88ff);
+      color: white;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    input {
+      padding: 12px;
+      border-radius: 999px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      text-align: left;
+    }
+
+    input::placeholder {
+      color: #8a8fb5;
+    }
+
+    .status {
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    .canvas-wrap {
+      height: 90px;
+      width: 100%;
+      background: rgba(5, 5, 20, 0.88);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    #pulse-canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .disclaimer {
+      font-size: 12px;
+      opacity: 0.55;
+      margin-top: 6px;
+      text-align: center;
+      line-height: 1.35;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="root">
+    <h1 style="margin:0;">Light-O-Rama Audio Packager</h1>
+    <h3 style="margin:0; opacity:0.75;">SYMBEYOND Indigo Engine</h3>
+
+    <div class="card">
+
+      <input id="youtube-input" class="uniform" placeholder="Paste YouTube URL here..." />
+
+      <button id="btn-youtube-run" class="btn uniform">Process YouTube Link</button>
+
+      <button id="btn-local" class="btn uniform">Process Local MP3 File</button>
+
+      <div id="status-text" class="status">Idle — Waiting for command.</div>
+
+      <div class="canvas-wrap">
+        <canvas id="pulse-canvas"></canvas>
+      </div>
+
+      <div class="disclaimer">
+        ⚠️ A Reminder of Respect:<br>
+        Please only process audio you have the right to use,<br>
+        not because the law says so, but because respect matters.
+      </div>
+
+    </div>
+  </div>
+
+  <script src="./renderer.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,14 @@
+Required before first launch:
+
+Mac:
+brew install python3 ffmpeg yt-dlp
+
+Windows:
+Install Python (enable PATH)
+Install FFmpeg (add to PATH)
+pip install yt-dlp
+
+Linux:
+sudo apt install python3 ffmpeg
+pip3 install yt-dlp
+

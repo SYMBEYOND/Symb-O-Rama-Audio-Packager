@@ -1,0 +1,6 @@
+yt-dlp
+librosa
+soundfile
+numpy
+tqdm
+pydub

@@ -1,0 +1,62 @@
+/* RESET BODY BACKGROUND AND SMOOTH UV→IR ANIMATION */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-size: 400% 400%;
+    animation: uvToIr 18s ease infinite alternate;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+    color: #e3e7ff;
+}
+
+/* Center header properly */
+.header-container {
+    text-align: center;
+    margin-top: 28px;
+}
+
+/* Smooth animated spectrum */
+@keyframes uvToIr {
+    0%   { background: linear-gradient(135deg, #5f00ff, #7f00ff); }
+    25%  { background: linear-gradient(135deg, #4b0aff, #9a00ff); }
+    50%  { background: linear-gradient(135deg, #3200ff, #5900ff); }
+    75%  { background: linear-gradient(135deg, #ff008c, #ff0044); }
+    100% { background: linear-gradient(135deg, #ff3d00, #ff0000); }
+}
+
+/* Make header text smoother */
+.title {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #d8dfff;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+/* FIX: this restores your original beautiful card layout */
+.card {
+    max-width: 520px;
+    width: 100%;
+    margin: 36px auto 0 auto;
+}
+
+/* FIX: make waveform width always fill the card */
+.canvas-wrap {
+    width: 100%;
+    height: 120px;
+    margin-top: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(10, 10, 25, 0.4);
+}
+
+#pulse-canvas {
+    width: 100%;
+    height: 100%;
+}
+
