@@ -148,21 +148,13 @@ Anything built from it should honor effort, community, and creativity.
 
 ---
 
-Final Note
-Tools are more than code.
-They carry intent.
+🍏 macOS
 
-The intent here is simple:
+Click to download:
 
-Help creators build something beautiful.
+[▶ Run_LOR.command](Run_LOR.command)
 
----
-
-Created by John Thomas DuCrest Lock - ChatGPT 5.1 - SYMBEYOND 
-
----
-
-🍏 Mac (macOS)
+Then:
 
 Press Command + Space
 
@@ -170,53 +162,63 @@ Type: Terminal
 
 Press Return
 
-When the Terminal window opens:
+Drag Run_LOR.command into the Terminal window
 
-Drag this file into it:
+Press Return to execute
 
-Run_LOR.command
+The first run may take a minute as dependencies are verified.
 
-Press Return to run it.
+🪟 Windows (Coming Soon)
 
-The first time may take a minute while it sets things up.
+Download:
 
----
+[▶ Run_LOR.bat](Run_LOR.bat)
 
-🪟 Windows - **COMMING SOON**
+Then:
 
-Find the file:
+Right-click the file
 
-Run_LOR.bat
+Select: Run as Administrator
 
-Right-click it
+The app opens automatically
 
-Select Run as Administrator
-
-The program will open automatically.
-
----
-
-Requirements
-
-Most users won’t need to worry about these. The script checks and helps install them automatically.
-
+Requirements (Mostly Automatic)
 Requirement	Version	Needed For
-Python	3.10+	Running the tool
-FFmpeg	Any recent version	Audio conversion
-Internet	Optional	Only needed when downloading from YouTube
-When It Finishes
+Python	3.10+	Running backend scripts
+FFmpeg	Latest	Audio conversion
+Internet	Optional	Only required if downloading from YouTube
 
-A new folder will appear on your Desktop named:
+You don't need to install these manually.
+If something is missing, the tool prompts you.
+
+When It’s Done
+
+You’ll find a new folder on your Desktop named:
 
 SONG_TITLE_LOR_Package/
 
 
-Inside is everything ready for use in Light-O-Rama or SuperStar.
+Inside are all timing files, audio, and Superstar-compatible data.
+Ready for Light-O-Rama. No cleanup required.
 
----
+If Something Doesn’t Work
 
-Troubleshooting
+Restart Terminal (macOS) or your PC (Windows)
 
-If nothing happens, restart Terminal (Mac) or the PC (Windows).
+Make sure the app isn’t stored in:
 
-If the script errors, make sure the folder isn’t inside iCloud or OneDrive — move it to a normal local folder.
+iCloud Desktop
+
+OneDrive
+
+Shared network drives
+
+Move it locally and try again.
+
+Respect Matters
+
+This tool never uploads, stores, or tracks anything.
+
+Use only music you have the legal right to sequence.
+
+Creators deserve respect — not extraction.
