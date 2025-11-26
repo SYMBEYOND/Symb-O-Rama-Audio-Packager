@@ -11,18 +11,30 @@ BASE_OUT.mkdir(parents=True, exist_ok=True)
 # @anchor:ffmpeg_detection
 def get_ffmpeg_path():
     """
-    Detect correct ffmpeg binary path for both development and packaged runtime.
+    Detect correct ffmpeg binary path for Mac, Windows and Linux
+    (both development and packaged runtime).
     """
 
-    app_path = Path(sys.executable).resolve()
+    platform = sys.platform
 
-    # Detect packaged app environment by checking if Resources exists above runtime
-    resources_dir = app_path.parents[1] / "backend" / "ffmpeg" / "ffmpeg"
-    if resources_dir.exists():
-        return resources_dir
+    # Packaged / runtime paths
+    base = Path(sys.executable).resolve().parents[1] / "backend" / "ffmpeg"
 
-    # Development mode fallback
-    return Path(__file__).parent.parent / "ffmpeg" / "ffmpeg"
+    if platform.startswith("win"):
+        candidate = base / "ffmpeg.exe"
+    elif platform.startswith("linux"):
+        candidate = base / "ffmpeg"
+    else:  
+        # macOS fallback
+        candidate = base / "ffmpeg"
+
+    if candidate.exists():
+        return candidate
+
+    # Development fallback
+    return Path(__file__).parent.parent / "ffmpeg" / ("ffmpeg.exe" if platform.startswith("win") else "ffmpeg")
+
+
 
 def fetch_audio(url, out_dir=BASE_OUT):
 
@@ -40,7 +52,7 @@ def fetch_audio(url, out_dir=BASE_OUT):
                 "preferredcodec": "mp3",
                 "preferredquality": "192"
             }
-        ],
+        ]
     }
 
     print(f"\nUsing ffmpeg at: {ffmpeg_path}\n")
@@ -48,9 +60,19 @@ def fetch_audio(url, out_dir=BASE_OUT):
     with YoutubeDL(opts) as ydl:
         info = ydl.extract_info(url, download=True)
         mp3_file = out_dir / f"{info['title']}.mp3"
+
+        # Normalize filename after download
+        import re
+        safe_name = re.sub(r'[^A-Za-z0-9_-]+', '_', mp3_file.stem).strip('_')
+        normalized = mp3_file.with_name(safe_name + mp3_file.suffix)
+
+        # Rename only if needed
+        if normalized != mp3_file:
+            mp3_file.rename(normalized)
+            mp3_file = normalized
+
         print(f"\nSaved as:\n{mp3_file}\n")
         return mp3_file
-
 
 def run_packager(audio_path):
     script_path = Path(__file__).parent / "lor_packager.py"
