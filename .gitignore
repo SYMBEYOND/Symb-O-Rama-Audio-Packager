@@ -1,27 +1,36 @@
-# Ignore Python cache and virtual environments
+# Python environment and cache
+venv/
 __pycache__/
 *.pyc
-venv/
+*.pyo
+
+# Python environment files
 .env
 *.env
 
-# Ignore macOS metadata
-.DS_Store
+# Node dependencies
+node_modules/
 
-# Ignore generated audio and video
+# Build artifacts (never commit installers or unpacked builds)
+dist/
+*.dmg
+*.zip
+*.exe
+*.AppImage
+*.deb
+*.blockmap
+
+# OS Junk
+.DS_Store
+Thumbs.db
+
+# Generated media files (optional cleanup)
 *.mp3
 *.wav
 *.webm
 *.mp4
 
-# Ignore temporary or user-specific folders
+# User workspace folders
 DropZone/
 LOR_Packages/
 
-# Ignore build app
-dist/
-runtime/
-node_modules/
-*.dmg
-*.zip
-*.app

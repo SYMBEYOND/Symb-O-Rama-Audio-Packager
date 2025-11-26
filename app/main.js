@@ -25,8 +25,37 @@ function getPythonPath() {
         return null;
     }
 
-    // ---- Packaged Mode ----
-    return path.join(process.resourcesPath, "runtime", "python", "python");
+    // ---- Packaged Mode (Cross Platform) ----
+    const platform = os.platform();
+
+    // Possible runtime python paths (electron-builder may place them differently)
+    const candidates = [];
+
+    if (platform === "win32") {
+        candidates.push(
+            path.join(process.resourcesPath, "runtime", "python", "python.exe"),
+            path.join(process.resourcesPath, "python", "python.exe"),
+            path.join(process.resourcesPath, "..", "runtime", "python", "python.exe") // NSIS/zip fallback
+        );
+    } else if (platform === "linux") {
+        candidates.push(
+            path.join(process.resourcesPath, "runtime", "python", "python3"),
+            path.join(process.resourcesPath, "python", "python3")
+        );
+    } else {
+        // macOS
+        candidates.push(
+            path.join(process.resourcesPath, "runtime", "python", "python"),
+            path.join(process.resourcesPath, "python", "python")
+        );
+    }
+
+    // Return first existing path
+    for (const p of candidates) {
+        try { fs.accessSync(p); return p; } catch {}
+    }
+
+    return null;
 }
 
 // -----------------------------

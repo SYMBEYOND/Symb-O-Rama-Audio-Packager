@@ -49,7 +49,8 @@ def make_superstar_grid(outxml, beats, grid_name="AutoGrid"):
 def make_readme(readme_path, songname):
     content = f"""# Light-O-Rama Package: {songname}
 
-This folder contains everything needed for Sequencer or SuperStar.
+Generated automatically using the Light-O-Rama Audio Packager.
+Version: 1.0.0 | Platform Agnostic Processing
 
 Contents:
 • {songname}_LOR.wav
@@ -82,7 +83,8 @@ def main(infile):
         return
 
     # --- PROCESSING SETUP ---
-    songname = infile_path.stem
+    import re
+    songname = re.sub(r'[^A-Za-z0-9_-]+', '_', infile_path.stem).strip('_')
     base_name = f"{songname}_LOR_Package"
 
     outdir = get_versioned_folder(base_name)
