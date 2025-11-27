@@ -122,7 +122,7 @@ ipcMain.handle("lor:pick-file", async () => {
 
 ipcMain.handle("lor:local", async (event, filepath) => {
     try {
-        const res = await runPython("lor_packager.py", [filepath]);
+        const res = await runPython("symb_packager.py", [filepath]);
         return res;
     } catch (err) {
         return { ok: false, error: err.message };

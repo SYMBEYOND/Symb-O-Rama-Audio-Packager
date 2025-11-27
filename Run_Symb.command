@@ -9,5 +9,5 @@ source venv/bin/activate
 
 pip install -r requirements.txt >/dev/null
 
-python3 lor_packager.py
+python3 symb_packager.py
 

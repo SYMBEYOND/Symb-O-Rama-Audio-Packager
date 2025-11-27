@@ -3,7 +3,7 @@ import sys, os, librosa, soundfile as sf
 from pathlib import Path
 
 # ==============================================================
-# Light-O-Rama Audio Packager
+# Symb-O-Rama Audio Packager
 # Converts MP3/WAV → mono WAV + timing grid + Superstar XML
 # Output always saved to Desktop with automatic versioning
 # ==============================================================
@@ -47,9 +47,10 @@ def make_superstar_grid(outxml, beats, grid_name="AutoGrid"):
         f.write('</timingGrid>\n')
 
 def make_readme(readme_path, songname):
-    content = f"""# Light-O-Rama Package: {songname}
+    content = f"""# Symb-O-Rama Package: {songname}
 
-This folder contains everything needed for Sequencer or SuperStar.
+Generated automatically using the Symb-O-Rama Audio Packager.
+Version: 1.0.0 | Platform Agnostic Processing
 
 Contents:
 • {songname}_LOR.wav
@@ -70,8 +71,22 @@ SuperStar:
         f.write(content)
 
 def main(infile):
-    songname = Path(infile).stem
+    infile_path = Path(infile).expanduser().resolve()
+
+    # --- SAFETY CHECKS ---
+    if not infile_path.exists():
+        print(f"Input file not found: {infile_path}")
+        return
+
+    if infile_path.name.endswith("_LOR.wav"):
+        print("Refusing to repackage an _LOR.wav file. Pick the original audio file instead.")
+        return
+
+    # --- PROCESSING SETUP ---
+    import re
+    songname = re.sub(r'[^A-Za-z0-9_-]+', '_', infile_path.stem).strip('_')
     base_name = f"{songname}_LOR_Package"
+
     outdir = get_versioned_folder(base_name)
     outdir.mkdir(exist_ok=True)
 
@@ -80,19 +95,31 @@ def main(infile):
     xml_path = outdir / f"{songname}_LOR_SuperstarGrid.xml"
     readme_path = outdir / f"README_{songname}_LOR.md"
 
-    print(f"Converting {infile} → {wav_path}")
-    y, sr = convert_audio(infile, wav_path)
+    print(f"Converting {infile_path} → {wav_path}")
+    y, sr = convert_audio(infile_path, wav_path)
+
+    # Copy original audio into the package folder
+    original_copy = outdir / infile_path.name
+    if not original_copy.exists():
+        try:
+            import shutil
+            shutil.copy2(infile_path, original_copy)
+            print(f"Copied original MP3: {original_copy}")
+        except Exception as e:
+            print(f"Failed to copy MP3: {e}")
+
 
     beats = detect_beats(y, sr)
     make_timing_file(txt_path, beats)
     make_superstar_grid(xml_path, beats)
     make_readme(readme_path, songname)
 
+    print()
     print(f"Package ready: {outdir}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: lor_packager.py inputfile.mp3|wav")
+        print("Usage: symb_packager.py inputfile.mp3|wav")
         sys.exit(1)
     for arg in sys.argv[1:]:
         main(arg)
