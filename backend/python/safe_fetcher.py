@@ -75,7 +75,7 @@ def fetch_audio(url, out_dir=BASE_OUT):
         return mp3_file
 
 def run_packager(audio_path):
-    script_path = Path(__file__).parent / "lor_packager.py"
+    script_path = Path(__file__).parent / "symb_packager.py"
     python = sys.executable
 
     result = subprocess.run(

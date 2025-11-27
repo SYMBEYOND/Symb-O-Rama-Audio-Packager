@@ -10,6 +10,6 @@ call venv\Scripts\activate
 
 pip install -r requirements.txt >nul
 
-python lor_packager.py
+python symb_packager.py
 pause
 
