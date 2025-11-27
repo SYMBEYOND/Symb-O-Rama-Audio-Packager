@@ -116,7 +116,7 @@ Future features being explored:
 
 MIT License — Copyright (c) 2025 John Thomas DuCrest Lock
 
-See [LICENSE]((https://github.com/SYMBEYOND/Symb-O-Rama-Audio-Packager/tree/main?tab=License-1-ov-file)) for full details.
+See [LICENSE](https://github.com/SYMBEYOND/Symb-O-Rama-Audio-Packager/blob/main/LICENSE) for full details.
 
 **Respect Clause** (not legally binding, but part of the project's ethos):
 
@@ -136,5 +136,6 @@ Tools grow when communities share them, not gatekeep them.
 ---
 
 Made with care by [SYMBEYOND](https://github.com/SYMBEYOND)
+
 
 
