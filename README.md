@@ -1,239 +1,115 @@
-# Light-O-Rama Audio Packager  
-🎄 Built for Light-O-Rama creators who care about quality, control, and privacy.
+🚦 NEW RELEASE:
+
+Symb-O-Rama Audio Packager v1.1.1
+
+A lightweight, cross-platform tool for sequencing creators and holiday lighting enthusiasts.
 
 ---
 
-👉 **[Download Latest Release](https://github.com/10John01/light-o-rama-audio-packager/releases/latest)**  
+🎯 What It Does
 
 ---
 
-[![Version](https://img.shields.io/badge/version-1.0.1-green.svg)]()
-[![Platform](https://img.shields.io/badge/platform-macOS%20ARM64-blue.svg)]()
-[![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)]()
+This app takes either:
+
+• A legally owned YouTube link
+
+• Or a legally owned local MP3/WAV file
+
+And automatically generates a clean, sequencing-ready audio package.
+
+No configuration. No command-line steps. No setup.
 
 ---
 
-### Purpose
+📦 What It Outputs:
 
-This application exists to solve a real problem:
-Converting a song you legally own into a clean, timing-ready package for Light-O-Rama sequencing.
+Each processed song creates a folder on your Desktop containing:
 
-No ads.  
-No clutter.  
-No assumptions.
+• A normalized 44.1 kHz mono WAV
 
-Just a clear path from audio → usable sequencing assets.
+• The original MP3 preserved
 
----
+• A timing grid file
 
-### What This Tool Produces Automatically
+• A Superstar-compatible XML timing map
 
-When given either a **YouTube link** or a **local MP3/WAV file**, the packager generates a complete folder containing:
+• A README with metadata and notes
 
-| File | Purpose |
-|------|---------|
-| `SongName.wav` | Clean mono 44.1 kHz audio optimized for sequencing |
-| `SongName.mp3` | Original source format preserved |
-| `SongName_LOR_Timings.txt` | Beat grid for Light-O-Rama timing tracks |
-| `SongName_LOR_SuperStarGrid.xml` | Superstar-compatible beat map |
-| `README_SongName_LOR.md` | Instructions and metadata for reference |
-
-Everything is placed into a clearly named folder on your Desktop:
-
-SONG_TITLE_LOR_Package/
-
-yaml
-Copy code
+The folder name matches the song title, so everything stays organized.
 
 ---
 
-### Installation
+🧠 Why It Exists:
 
-#### macOS
+Anyone who sequences holiday lights knows:
 
-1. Download the latest **`.dmg`** from the Releases tab.
-2. Drag the app into `Applications`.
-3. The first time macOS may quarantine it.  
-   Run once with:
+Getting clean audio + usable timing tracks is the first brick wall.
 
----
-In your Terminal **(command + space, then type: Terminal and press return)**
-Copy the following code:
+This removes that frustration — and replaces it with a single workflow:
 
-xattr -dr com.apple.quarantine "/Applications/Light-O-Rama Audio Packager.app"
-
-After that, it opens normally.
-
-No Python install required.
-No FFmpeg setup.
-No configuration.
-
-Everything needed is already bundled.
+Input → Process → Done.
 
 ---
 
-How to Use:
+🖥 Supported Platforms:
 
-Open the app.
+• macOS (Apple Silicon) — supported now
 
-Choose either:
+• Windows — supported
 
-Download from YouTube
-OR
-Process Local MP3/WAV
+• Linux (AppImage + .deb) — supported
 
-Wait while the system:
+• macOS Intel — planned
 
-Fetches and normalizes audio
-
-Converts waveform to sequencing-ready format
-
-Generates timing data
-
-Creates Superstar grid
-
-When complete, Finder will open the new package automatically.
+No Python install required. No FFmpeg setup. It’s bundled.
 
 ---
 
-**Platform Support**
-
-Platform	Status:
-
-macOS (Apple Silicon)	Fully Supported
-
-macOS Intel	- Planned
-
-Windows 10/11 - Planned
-
-Linux	- Planned
+🔒 Privacy & Ownership
 
 ---
 
-Source, Security, and Respect
-All audio is processed locally.
+Everything is processed locally.
 
-No files are uploaded.
-Nothing is stored or shared.
-The tool does not check, enforce, or track licensing.
+Nothing is uploaded. Nothing is tracked.
 
-Responsibility remains with the user.
+Users are responsible for ensuring they have the rights to the music they process.
 
-Process only music you have the legal right to use – not because a policy demands it, but because respecting creators matters.
+Not because a warning demands it — but because respecting creators matters.
 
 ---
 
-Contributing
-This project will evolve.
-Upcoming milestones include:
-
-Windows installer
-
-Batch processing
-
-Custom timing profiles
-
-Direct Light-O-Rama import format
+🚧 Roadmap
 
 ---
 
-Pull requests are welcome once contribution rules are formalized.
+Future features being explored include:
+
+• Batch processing
+
+• Alternative timing algorithms
+
+• Direct export for more sequencing apps
+
+• Plugin-style extensions
 
 ---
 
-Status:
+🔗 Download:
 
-Stable Version: 1.0.1
-Build Type: Bundled runtime with portable FFmpeg
-Testing: Verified on macOS Sonoma ARM64
+📍 Latest Release:
 
----
-
-License
-MIT License with one added principle:
-
-This software is free to use and build upon
-but never exploitative.
-Anything built from it should honor effort, community, and creativity.
+https://github.com/SYMBEYOND/Symb-O-Rama-Audio-Packager/releases/latest
 
 ---
 
-🍏 macOS
+🧾 License:
 
-Click to download:
+MIT license with one added principle:
 
-[▶ Run_LOR.command](Run_LOR.command)
+“Software built for a creative community should never become exploitative.”
 
-Then:
+If this tool helps you — consider sharing it with another creator in the holiday lighting community.
 
-Press Command + Space
-
-Type: Terminal
-
-Press Return
-
-Drag Run_LOR.command into the Terminal window
-
-Press Return to execute
-
-The first run may take a minute as dependencies are verified.
-
-🪟 Windows (Coming Soon)
-
-Download:
-
-[▶ Run_LOR.bat](Run_LOR.bat)
-
-Then:
-
-Right-click the file
-
-Select: Run as Administrator
-
-The app opens automatically
-
-Requirements (Mostly Automatic)
-Requirement	Version	Needed For
-Python	3.10+	Running backend scripts
-FFmpeg	Latest	Audio conversion
-Internet	Optional	Only required if downloading from YouTube
-
-You don't need to install these manually.
-If something is missing, the tool prompts you.
-
-When It’s Done
-
-You’ll find a new folder on your Desktop named:
-
-SONG_TITLE_LOR_Package/
-
----
-
-Inside are all timing files, audio, and Superstar-compatible data.
-Ready for Light-O-Rama. No cleanup required.
-
-If Something Doesn’t Work
-
-Restart Terminal (macOS) or your PC (Windows)
-
-Make sure the app isn’t stored in:
-
-iCloud Desktop
-
-OneDrive
-
-Shared network drives
-
-Move it locally and try again.
-
-Respect Matters
-
-This tool never uploads, stores, or tracks anything.
-
-Use only music you have the legal right to sequence.
-
-Creators deserve respect, not extraction.
-
----
-
-If this tool helped you, consider sharing it with another creator.
+Sequencing should feel creative, not painful.
