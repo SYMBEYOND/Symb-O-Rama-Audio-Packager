@@ -1,21 +1,26 @@
 {
-  "name": "light-o-rama-audio-packager",
-  "version": "1.0.0",
-  "description": "A simple cross-platform audio preparation tool for Light-O-Rama sequencing.",
+  "name": "symb-o-rama-audio-packager",
+  "version": "1.1.1",
+  "description": "Audio preparation tool optimized for holiday sequencing and show systems.",
   "author": {
     "name": "John Thomas DuCrest Lock",
-    "email": "contact@symbeyond.ai"
+    "email": "johnducrest1@gmail.com"
   },
   "main": "app/main.js",
   "scripts": {
     "start": "electron .",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac --arm64",
+    "dist:win": "electron-builder --win --x64",
+    "dist:linux": "electron-builder --linux --x64"
   },
   "build": {
     "appId": "com.symbeyond.lorpackager",
-    "productName": "Light-O-Rama Audio Packager",
+    "productName": "Symb-O-Rama Audio Packager",
     "asar": false,
+    "directories": {
+      "output": "dist"
+    },
     "files": [
       "app/**/*",
       "backend/**/*",
@@ -24,21 +29,36 @@
       "package.json"
     ],
     "extraResources": [
-      { "from": "backend/", "to": "backend/" },
-      { "from": "runtime/", "to": "runtime/" }
+      {
+        "from": "backend/",
+        "to": "backend/"
+      },
+      {
+        "from": "runtime/",
+        "to": "runtime/"
+      }
     ],
-    "directories": {
-      "output": "dist"
-    },
     "mac": {
       "category": "public.app-category.utilities",
-      "target": [ "dmg", "zip" ]
+      "icon": "assets/icons/SYMBEYOND_logo_mac.png",
+      "target": [
+        "dmg",
+        "zip"
+      ]
     },
     "win": {
-      "target": [ "nsis", "zip" ]
+      "icon": "assets/icons/SYMBEYOND_logo_pc.ico",
+      "target": [
+        "nsis",
+        "zip"
+      ]
     },
     "linux": {
-      "target": [ "AppImage", "deb" ],
+      "icon": "assets/icons/SYMBEYOND_logo_linux.png",
+      "target": [
+        "AppImage",
+        "deb"
+      ],
       "category": "Utility"
     }
   },
