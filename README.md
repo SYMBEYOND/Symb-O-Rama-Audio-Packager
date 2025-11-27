@@ -1,3 +1,30 @@
+**UNDER CONSTRUCTION, REPO NOT READY: 
+SYMB-O-RAMA RELEASE TODO — FINAL CHECKLIST**
+
+☐ Rename build files using final naming standard
+
+☐ Update electron-builder config to auto-name correctly
+
+☐ Update README download links with the new filenames
+
+☐ Create RELEASE.md for GitHub Pages (clean public version)
+
+☐ Test installers again on:
+
+    - Mac ARM (done)
+    
+    - Mac Intel (pending)
+    
+    - Windows (pending)
+    
+    - Linux (pending)
+
+☐ Create final 1.1.2 stable tag
+
+☐ Publish release and announcement post
+
+---
+
 🚦 NEW RELEASE:
 
 Symb-O-Rama Audio Packager v1.1.1
