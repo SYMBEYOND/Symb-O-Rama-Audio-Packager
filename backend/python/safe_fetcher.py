@@ -102,7 +102,7 @@ if __name__ == "__main__":
     mp3 = fetch_audio(url)
     ok = run_packager(mp3)
 
-    print(f"PACKAGED_FOLDER::{mp3.stem}_LOR_Package")
+    print(f"PACKAGED_FOLDER::{mp3.stem}_Symb_Package")
 
     sys.exit(0 if ok else 1)
 

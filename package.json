@@ -15,7 +15,7 @@
     "dist:linux": "electron-builder --linux --x64"
   },
   "build": {
-    "appId": "com.symbeyond.lorpackager",
+    "appId": "com.symbeyond.symborama",
     "productName": "Symb-O-Rama Audio Packager",
     "asar": false,
     "directories": {
