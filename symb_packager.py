@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import sys, os, librosa, soundfile as sf
+import sys, os, shutil, librosa, soundfile as sf
 from pathlib import Path
 
 # ==============================================================
@@ -52,6 +52,7 @@ def make_readme(readme_path, songname):
 This folder contains everything needed for Sequencer or Star Timings.
 
 Contents:
+• {songname}_original.mp3 (or .wav) — your original audio
 • {songname}_Symb.wav
 • {songname}_Symb_Timings.txt
 • {songname}_Symb_StarTimings.xml
@@ -88,6 +89,11 @@ def main(infile):
     make_star_timings_grid(xml_path, beats)
     make_readme(readme_path, songname)
 
+
+    # Copy original audio to package
+    original_ext = Path(infile).suffix
+    original_copy = outdir / f"{songname}_original{original_ext}"
+    shutil.copy(infile, original_copy)
     print(f"Package ready: {outdir}")
 
 if __name__ == "__main__":
