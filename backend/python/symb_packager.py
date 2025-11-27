@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import sys, os, librosa, soundfile as sf
+import sys, os, shutil, librosa, soundfile as sf
 from pathlib import Path
 
 # ==============================================================
@@ -49,10 +49,10 @@ def make_star_timings_grid(outxml, beats, grid_name="AutoGrid"):
 def make_readme(readme_path, songname):
     content = f"""# Symb-O-Rama Package: {songname}
 
-Generated automatically using the Symb-O-Rama Audio Packager.
-Version: 1.0.0 | Platform Agnostic Processing
+This folder contains everything needed for Sequencer or Star Timings.
 
 Contents:
+• {songname}_original.mp3 (or .wav) — your original audio
 • {songname}_Symb.wav
 • {songname}_Symb_Timings.txt
 • {songname}_Symb_StarTimings.xml
@@ -71,22 +71,8 @@ Star Timings:
         f.write(content)
 
 def main(infile):
-    infile_path = Path(infile).expanduser().resolve()
-
-    # --- SAFETY CHECKS ---
-    if not infile_path.exists():
-        print(f"Input file not found: {infile_path}")
-        return
-
-    if infile_path.name.endswith("_Symb.wav"):
-        print("Refusing to repackage an _Symb.wav file. Pick the original audio file instead.")
-        return
-
-    # --- PROCESSING SETUP ---
-    import re
-    songname = re.sub(r'[^A-Za-z0-9_-]+', '_', infile_path.stem).strip('_')
+    songname = Path(infile).stem
     base_name = f"{songname}_Symb_Package"
-
     outdir = get_versioned_folder(base_name)
     outdir.mkdir(exist_ok=True)
 
@@ -95,26 +81,19 @@ def main(infile):
     xml_path = outdir / f"{songname}_Symb_StarTimings.xml"
     readme_path = outdir / f"README_{songname}_Symb.md"
 
-    print(f"Converting {infile_path} → {wav_path}")
-    y, sr = convert_audio(infile_path, wav_path)
-
-    # Copy original audio into the package folder
-    original_copy = outdir / infile_path.name
-    if not original_copy.exists():
-        try:
-            import shutil
-            shutil.copy2(infile_path, original_copy)
-            print(f"Copied original MP3: {original_copy}")
-        except Exception as e:
-            print(f"Failed to copy MP3: {e}")
-
+    print(f"Converting {infile} → {wav_path}")
+    y, sr = convert_audio(infile, wav_path)
 
     beats = detect_beats(y, sr)
     make_timing_file(txt_path, beats)
     make_star_timings_grid(xml_path, beats)
     make_readme(readme_path, songname)
 
-    print()
+
+    # Copy original audio to package
+    original_ext = Path(infile).suffix
+    original_copy = outdir / f"{songname}_original{original_ext}"
+    shutil.copy(infile, original_copy)
     print(f"Package ready: {outdir}")
 
 if __name__ == "__main__":
