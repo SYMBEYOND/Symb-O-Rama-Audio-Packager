@@ -59,7 +59,7 @@ Each processed song creates a folder on your Desktop containing:
 
 • A timing grid file
 
-• A Superstar-compatible XML timing map
+• A Star Timings-compatible XML timing map
 
 • A README with metadata and notes
 

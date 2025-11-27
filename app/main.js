@@ -110,7 +110,7 @@ function runPython(script, args = []) {
 // -----------------------------
 // IPC Events
 // -----------------------------
-ipcMain.handle("lor:pick-file", async () => {
+ipcMain.handle("symb:pick-file", async () => {
     const result = await dialog.showOpenDialog({
         title: "Select MP3",
         filters: [{ name: "MP3", extensions: ["mp3"] }],
@@ -120,7 +120,7 @@ ipcMain.handle("lor:pick-file", async () => {
     return (!result.canceled && result.filePaths.length) ? result.filePaths[0] : null;
 });
 
-ipcMain.handle("lor:local", async (event, filepath) => {
+ipcMain.handle("symb:local", async (event, filepath) => {
     try {
         const res = await runPython("symb_packager.py", [filepath]);
         return res;
@@ -129,7 +129,7 @@ ipcMain.handle("lor:local", async (event, filepath) => {
     }
 });
 
-ipcMain.handle("lor:youtube", async (event, url) => {
+ipcMain.handle("symb:youtube", async (event, url) => {
     const res = await runPython("safe_fetcher.py", [url]);
     if (!res.ok) return res;
 

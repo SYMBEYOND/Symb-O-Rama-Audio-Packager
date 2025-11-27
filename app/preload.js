@@ -1,8 +1,8 @@
 const { contextBridge, ipcRenderer } = require("electron");
 
-contextBridge.exposeInMainWorld("LOR", {
-    runYouTube: (url) => ipcRenderer.invoke("lor:youtube", url),
-    runLocal: (filepath) => ipcRenderer.invoke("lor:local", filepath),
-    pickLocal: () => ipcRenderer.invoke("lor:pick-file")
+contextBridge.exposeInMainWorld("Symb", {
+    runYouTube: (url) => ipcRenderer.invoke("symb:youtube", url),
+    runLocal: (filepath) => ipcRenderer.invoke("symb:local", filepath),
+    pickLocal: () => ipcRenderer.invoke("symb:pick-file")
 });
 

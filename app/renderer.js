@@ -49,7 +49,7 @@ function applyAudioReactiveGlow(level) {
 }
 
 // Exposed trigger from backend
-window.LOR.updateBeat = (value) => {
+window.Symb.updateBeat = (value) => {
     intensity = value;
 };
 
@@ -61,7 +61,7 @@ btnYT.onclick = async () => {
 
     statusText.textContent = "Downloading and processing...";
 
-    const res = await window.LOR.runYouTube(url);
+    const res = await window.Symb.runYouTube(url);
 
     if (res.ok) {
         statusText.textContent = "Done! Check Desktop.";
@@ -77,7 +77,7 @@ btnYT.onclick = async () => {
 btnLocal.onclick = async () => {
     statusText.textContent = "Opening file picker...";
 
-    const filePath = await window.LOR.pickLocal();
+    const filePath = await window.Symb.pickLocal();
 
     // If user canceled
     if (!filePath) {
@@ -88,7 +88,7 @@ btnLocal.onclick = async () => {
     statusText.textContent = "Processing file...";
 
     try {
-        const res = await window.LOR.runLocal(filePath);
+        const res = await window.Symb.runLocal(filePath);
 
         if (res.ok) {
             statusText.textContent = "✅ File processed! Check Desktop.";

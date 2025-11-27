@@ -4,7 +4,7 @@ from pathlib import Path
 
 # ==============================================================
 # Symb-O-Rama Audio Packager
-# Converts MP3/WAV → mono WAV + timing grid + Superstar XML
+# Converts MP3/WAV → mono WAV + timing grid + Star Timings XML
 # Output always saved to Desktop with automatic versioning
 # ==============================================================
 
@@ -38,7 +38,7 @@ def make_timing_file(outtxt, beats):
         for t in beats:
             f.write(f"{t:.3f}\t{t:.3f}\tBeat\n")
 
-def make_superstar_grid(outxml, beats, grid_name="AutoGrid"):
+def make_star_timings_grid(outxml, beats, grid_name="AutoGrid"):
     with open(outxml, "w") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
         f.write(f'<timingGrid name="{grid_name}">\n')
@@ -53,19 +53,19 @@ Generated automatically using the Symb-O-Rama Audio Packager.
 Version: 1.0.0 | Platform Agnostic Processing
 
 Contents:
-• {songname}_LOR.wav
-• {songname}_LOR_Timings.txt
-• {songname}_LOR_SuperstarGrid.xml
-• README_{songname}_LOR.md
+• {songname}_Symb.wav
+• {songname}_Symb_Timings.txt
+• {songname}_Symb_StarTimings.xml
+• README_{songname}_Symb.md
 
 Sequencer:
-1. New Musical Sequence → select {songname}_LOR.wav
+1. New Musical Sequence → select {songname}_Symb.wav
 2. Timings → Import Timings (Audacity Label File)
-3. Choose {songname}_LOR_Timings.txt
+3. Choose {songname}_Symb_Timings.txt
 
-SuperStar:
+Star Timings:
 1. File → Import Timings
-2. Choose {songname}_LOR_SuperstarGrid.xml
+2. Choose {songname}_Symb_StarTimings.xml
 """
     with open(readme_path, "w") as f:
         f.write(content)
@@ -78,22 +78,22 @@ def main(infile):
         print(f"Input file not found: {infile_path}")
         return
 
-    if infile_path.name.endswith("_LOR.wav"):
-        print("Refusing to repackage an _LOR.wav file. Pick the original audio file instead.")
+    if infile_path.name.endswith("_Symb.wav"):
+        print("Refusing to repackage an _Symb.wav file. Pick the original audio file instead.")
         return
 
     # --- PROCESSING SETUP ---
     import re
     songname = re.sub(r'[^A-Za-z0-9_-]+', '_', infile_path.stem).strip('_')
-    base_name = f"{songname}_LOR_Package"
+    base_name = f"{songname}_Symb_Package"
 
     outdir = get_versioned_folder(base_name)
     outdir.mkdir(exist_ok=True)
 
-    wav_path = outdir / f"{songname}_LOR.wav"
-    txt_path = outdir / f"{songname}_LOR_Timings.txt"
-    xml_path = outdir / f"{songname}_LOR_SuperstarGrid.xml"
-    readme_path = outdir / f"README_{songname}_LOR.md"
+    wav_path = outdir / f"{songname}_Symb.wav"
+    txt_path = outdir / f"{songname}_Symb_Timings.txt"
+    xml_path = outdir / f"{songname}_Symb_StarTimings.xml"
+    readme_path = outdir / f"README_{songname}_Symb.md"
 
     print(f"Converting {infile_path} → {wav_path}")
     y, sr = convert_audio(infile_path, wav_path)
@@ -111,7 +111,7 @@ def main(infile):
 
     beats = detect_beats(y, sr)
     make_timing_file(txt_path, beats)
-    make_superstar_grid(xml_path, beats)
+    make_star_timings_grid(xml_path, beats)
     make_readme(readme_path, songname)
 
     print()
