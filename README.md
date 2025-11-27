@@ -14,7 +14,7 @@ This app takes either:
 
 • A legally owned YouTube link
 
-• OR a legally owned local MP3/WAV file
+• Or a legally owned local MP3/WAV file
 
 And automatically generates a clean, sequencing-ready audio package.
 
