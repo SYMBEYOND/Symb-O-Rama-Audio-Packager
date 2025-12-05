@@ -34,23 +34,27 @@ The folder name matches the song title, so everything stays organized.
 
 **📍 Latest Release:** [Download Here](https://github.com/SYMBEYOND/Symb-O-Rama-Audio-Packager/releases/latest)
 
-### macOS (Apple Silicon)
+# Download Symb-O-Rama Audio Packager
 
-1. Download the `.dmg` file
-2. Open and drag the app to Applications
-3. First launch: Right-click → Open (to bypass Gatekeeper)
+Choose your operating system:
 
-### Windows
+### **macOS (Intel + M1/M2/M3)**
 
-1. Download the `.exe` installer
-2. Run the installer
-3. Launch from Start Menu
+Download:  
 
-### Linux
+https://github.com/10John01/Symb-O-Rama/releases/latest/download/Symb-O-Rama-mac.dmg
 
-1. Download the `.AppImage` or `.deb`
-2. For AppImage: `chmod +x` and run
-3. For .deb: `sudo dpkg -i filename.deb`
+### **Windows 10/11**
+
+Download:  
+
+https://github.com/10John01/Symb-O-Rama/releases/latest/download/Symb-O-Rama-win.exe
+
+No installation required.  
+
+Python and FFmpeg are bundled automatically.  
+
+Just load a legally-owned MP3/WAV or paste a YouTube link.
 
 **No Python install required. No FFmpeg setup. Everything is bundled.**
 
@@ -136,6 +140,7 @@ Tools grow when communities share them, not gatekeep them.
 ---
 
 Made with care by [SYMBEYOND](https://github.com/SYMBEYOND)
+
 
 
 
